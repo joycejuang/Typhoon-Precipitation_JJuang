@@ -10,9 +10,9 @@ library(stringr)
 # ------ file direction [set.1] ------
 {
   # code's path & output saving path
-  mainpath <- "/Users/joycejuang/Documents/氣象/neural network/typhoon neural network postprocessing"
+  mainpath <- "/Users/joycejuang/Documents/簧簸繞H/neural network/typhoon neural network postprocessing"
   # grids' information data path:
-  gridpath <- "/Users/joycejuang/Documents/氣象/rainmap/Map_Region_Data 2"
+  gridpath <- "/Users/joycejuang/Documents/簧簸繞H/rainmap/Map_Region_Data 2"
   # CWB typhoon data's path: 
   CWBpath <- "/Users/joycejuang/Documents/CWB_Data_Discussion"
 }
@@ -156,7 +156,7 @@ library(stringr)
         ## produce each predict time's output summary data
         predict <- matrix(NA, length(site), 27)
         for (j in site){
-          predict[match(j, site), ] <- readRDS(sprintf("%s/allpredict%05d.rds", txtsave, s))[i,]
+          predict[match(j, site), ] <- readRDS(sprintf("%s/allpredict%05d.rds", txtsave, j))[i,]
         }
         predict <- cbind(site, predict)
         colnames(predict) <- c("site", "obs", sprintf(paste0(tolower(modelname), UEname, "_%s"), c("mean", "sd", "crps")),
